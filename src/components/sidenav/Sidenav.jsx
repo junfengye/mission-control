@@ -49,65 +49,24 @@ const Sidenav = (props) => {
 
   return (
     <div className="sidenav-container">
-      <div className={showSidenav ? 'overlay' : 'no-overlay'} onClick={() => store.dispatch(set("uiState.showSidenav", false))}></div>
+      <div className={showSidenav ? 'overlay' : 'no-overlay'} onClick={() => store.dispatch(set("uiState.showSidenav", false))}/>
       <div className={showSidenav ? 'sidenav' : 'no-sidenav'}>
         <div style={{ overflowY: "auto" }}>
-          <Link to={`/mission-control/projects/${projectID}/${projectModules.OVERVIEW}`} onClick={closeSidenav}>
-            <SidenavItem name="Overview" icon="home" active={props.selectedItem === projectModules.OVERVIEW} />
-          </Link>
-          <Collapse
-            bordered={false}
-            expandIconPosition="right"
-            onChange={setActiveKeys}
-            activeKey={sideNavActiveKeys}
-            expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} />}>
-            <Panel header={<Header name="Storage" icon="dns" />} key="1">
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.DATABASE}`} onClick={closeSidenav}>
-                <PanelItem name="Database" active={props.selectedItem === projectModules.DATABASE} />
-              </Link>
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.FILESTORE}`} onClick={closeSidenav}>
-                <PanelItem name="File Store" active={props.selectedItem === projectModules.FILESTORE} />
-              </Link>
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.CACHE}`} onClick={closeSidenav}>
-                <PanelItem name="Cache" active={props.selectedItem === projectModules.CACHE} />
-              </Link>
-            </Panel>
-            <Panel header={<Header name="Microservices" icon="widgets" />} key="2">
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.REMOTE_SERVICES}`} onClick={closeSidenav}>
-                <PanelItem name="GraphQL API" active={props.selectedItem === projectModules.REMOTE_SERVICES} />
-              </Link>
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.EVENTING}`} onClick={closeSidenav}>
-                <PanelItem name="Eventing" active={props.selectedItem === projectModules.EVENTING} />
-              </Link>
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.DEPLOYMENTS}`} onClick={closeSidenav}>
-                <PanelItem name="Deployments" active={props.selectedItem === projectModules.DEPLOYMENTS} />
-              </Link>
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.SECRETS}`} onClick={closeSidenav}>
-                <PanelItem name="Secrets" active={props.selectedItem === projectModules.SECRETS} />
-              </Link>
-              <Link to={`/mission-control/projects/${projectID}/${projectModules.INGRESS_ROUTES}`} onClick={closeSidenav}>
-                <PanelItem name="Ingress Routing" active={props.selectedItem === projectModules.INGRESS_ROUTES} />
-              </Link>
-            </Panel>
-          </Collapse>
-          <Link to={`/mission-control/projects/${projectID}/${projectModules.USER_MANAGEMENT}`} onClick={closeSidenav}>
-            <SidenavItem name="Auth" icon="how_to_reg" active={props.selectedItem === projectModules.USER_MANAGEMENT} />
-          </Link>
           <Link to={`/mission-control/projects/${projectID}/${projectModules.EXPLORER}`} onClick={closeSidenav}>
             <SidenavItem name="API Explorer" icon="explore" active={props.selectedItem === projectModules.EXPLORER} />
           </Link>
-          <Divider />
-          <Link to={`/mission-control/projects/${projectID}/${projectModules.SETTINGS}`} onClick={closeSidenav}>
-            <SidenavItem name="Settings" icon="settings" active={props.selectedItem === projectModules.SETTINGS} />
+          <Link to={`/mission-control/projects/${projectID}/${projectModules.DATABASE}`} onClick={closeSidenav}>
+            <SidenavItem name="Database" icon="storage" active={props.selectedItem === projectModules.DATABASE} />
+          </Link>
+          <Link to={`/mission-control/projects/${projectID}/${projectModules.CACHE}`} onClick={closeSidenav}>
+            <SidenavItem name="Cache" icon="bolt" active={props.selectedItem === projectModules.CACHE} />
           </Link>
         </div>
         <div className="sidenav-version">
-          <InfoCircleOutlined style={{ fontSize: "20px", fontWeight: "700" }} />
           <div className="sidenav-version-content">
-            <Space direction="vertical" size={4}>
-              <Typography.Text>SC Version - v{version}</Typography.Text>
-              <Typography.Text>UI Version - v{uiVersion}</Typography.Text>
-            </Space>
+            <Link to={`/mission-control/projects/${projectID}/${projectModules.SETTINGS}`} onClick={closeSidenav}>
+              <SidenavItem name="Settings" icon="settings" active={props.selectedItem === projectModules.SETTINGS} />
+            </Link>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ const ServiceForm = (props) => {
   const { name, url } = props.initialValues ? props.initialValues : {}
   return (
     <Modal
-      title={`${props.initialValues ? "Edit" : "Add"} Remote Service`}
+      title={`${props.initialValues ? "Edit" : "Add"} REST Service`}
       okText={props.initialValues ? "Save" : "Add"}
       visible={true}
       onCancel={props.handleCancel}
@@ -41,10 +41,6 @@ const ServiceForm = (props) => {
           }
         ]}>
           <Input placeholder="Example: payment_service" disabled={props.initialValues ? true : false} />
-        </Form.Item>
-        <FormItemLabel name="URL" />
-        <Form.Item name="url" rules={[{ required: true, message: 'Please provide url!' }]}>
-          <Input placeholder="Example: http://localhost:3000" />
         </Form.Item>
       </Form>
     </Modal>

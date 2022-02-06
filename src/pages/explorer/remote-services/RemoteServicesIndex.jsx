@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
-import { notify, incrementPendingRequests, decrementPendingRequests } from '../../utils';
-import { loadRemoteServices } from '../../operations/remoteServices';
-import { loadCacheConfig } from "../../operations/cache";
+import { notify, incrementPendingRequests, decrementPendingRequests } from '../../../utils';
+import { loadRemoteServices } from '../../../operations/remoteServices';
+import { loadCacheConfig } from "../../../operations/cache";
 
 const RemoteServicesIndex = () => {
   const { projectID } = useParams()

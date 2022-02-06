@@ -1,18 +1,19 @@
 import React, { useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { notify, incrementPendingRequests, decrementPendingRequests } from "../../utils"
+import { notify, incrementPendingRequests, decrementPendingRequests } from "../../../utils"
 
 import { Button, Table, Popconfirm, Input, Empty } from "antd"
-import ServiceForm from "../../components/remote-services/service-form/ServiceForm"
-import Topbar from "../../components/topbar/Topbar"
-import Sidenav from "../../components/sidenav/Sidenav"
-import { saveRemoteService, deleteRemoteService, getRemoteServices } from "../../operations/remoteServices"
+import ServiceForm from "../../../components/remote-services/service-form/ServiceForm"
+import Topbar from "../../../components/topbar/Topbar"
+import Sidenav from "../../../components/sidenav/Sidenav"
+import { saveRemoteService, deleteRemoteService, getRemoteServices } from "../../../operations/remoteServices"
 
-import remoteServicesSvg from "../../assets/remote-services.svg"
-import { projectModules, actionQueuedMessage } from "../../constants";
+import remoteServicesSvg from "../../../assets/remote-services.svg"
+import { projectModules, actionQueuedMessage } from "../../../constants";
 import Highlighter from "react-highlight-words";
-import EmptySearchResults from "../../components/utils/empty-search-results/EmptySearchResults";
+import EmptySearchResults from "../../../components/utils/empty-search-results/EmptySearchResults";
+import ExplorerTabs from "../../../components/explorer/explorer-tabs/ExplorerTabs";
 
 const RemoteServices = () => {
   // Router params
@@ -118,44 +119,48 @@ const RemoteServices = () => {
   ]
 
   return (
-    <React.Fragment>
-      <Topbar showProjectSelector />
-      <Sidenav selectedItem={projectModules.REMOTE_SERVICES} />
-      <div className='page-content'>
-        {noOfServices === 0 && <div style={{ marginTop: 24 }}>
-          <div className="panel">
-            <img src={remoteServicesSvg} />
-            <p className="panel__description" style={{ marginTop: 48, marginBottom: 0 }}>Access your RESTful services via the unified GraphQL APIs of Space Cloud. <a href="https://docs.space-cloud.io/microservices/graphql">View Docs.</a></p>
-            <Button style={{ marginTop: 16 }} type="primary" className="action-rounded" onClick={() => setModalVisible(true)}>Add first remote service</Button>
-          </div>
-        </div>}
-        {noOfServices > 0 && (
-          <React.Fragment>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: '16px' }}>
-              <h3 style={{ margin: 'auto 0' }}>Remote Services {filteredServicesData.length ? `(${filteredServicesData.length})` : ''}</h3>
-              <div style={{ display: 'flex' }}>
-                <Input.Search placeholder='Search by remote service name' style={{ minWidth: '320px' }} allowClear={true} onChange={e => setSearchText(e.target.value)} />
-                <Button style={{ marginLeft: '16px' }} onClick={() => setModalVisible(true)} type="primary">Add</Button>
+      <div className='explorer'>
+        <Topbar showProjectSelector />
+        <Sidenav selectedItem={projectModules.EXPLORER} />
+        <div className='page-content page-content--no-padding'>
+          <ExplorerTabs activeKey="restService" projectID={projectID} />
+          <div style={{ padding: "32px 32px 0" }}>
+            {noOfServices === 0 && <div style={{ marginTop: 24 }}>
+              <div className="panel">
+                <img src={remoteServicesSvg} />
+                <p className="panel__description" style={{ marginTop: 48, marginBottom: 0 }}>Access your RESTful services via the unified GraphQL APIs of Space Cloud. <a href="https://docs.space-cloud.io/microservices/graphql">View Docs.</a></p>
+                <Button style={{ marginTop: 16 }} type="primary" className="action-rounded" onClick={() => setModalVisible(true)}>Add first remote service</Button>
               </div>
-            </div>
-            <Table
-              columns={tableColumns}
-              dataSource={filteredServicesData}
-              onRow={(record) => { return { onClick: event => { handleViewClick(record.name) } } }}
-              locale={{
-                emptyText: servicesTableData.length !== 0 ?
-                  <EmptySearchResults searchText={searchText} /> :
-                  <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description='No remote service created yet. Add a remote service' />
-              }} />
-          </React.Fragment>
-        )}
-        {modalVisible && <ServiceForm
-          initialValues={serviceClickedInfo}
-          handleCancel={handleCancel}
-          handleSubmit={handleSubmit}
-        />}
+            </div>}
+            {noOfServices > 0 && (
+              <React.Fragment>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: '16px' }}>
+                  <h3 style={{ margin: 'auto 0' }}>REST Services {filteredServicesData.length ? `(${filteredServicesData.length})` : ''}</h3>
+                  <div style={{ display: 'flex' }}>
+                    <Input.Search placeholder='Search by rest service name' style={{ minWidth: '320px' }} allowClear={true} onChange={e => setSearchText(e.target.value)} />
+                    <Button style={{ marginLeft: '16px' }} onClick={() => setModalVisible(true)} type="primary">Add</Button>
+                  </div>
+                </div>
+                <Table
+                  columns={tableColumns}
+                  dataSource={filteredServicesData}
+                  pagination={{showQuickJumper: true, hideOnSinglePage: false}}
+                  onRow={(record) => { return { onClick: event => { handleViewClick(record.name) } } }}
+                  locale={{
+                    emptyText: servicesTableData.length !== 0 ?
+                      <EmptySearchResults searchText={searchText} /> :
+                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description='No remote service created yet. Add a remote service' />
+                  }} />
+              </React.Fragment>
+            )}
+            {modalVisible && <ServiceForm
+              initialValues={serviceClickedInfo}
+              handleCancel={handleCancel}
+              handleSubmit={handleSubmit}
+            />}
+          </div>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 

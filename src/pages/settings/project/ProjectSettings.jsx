@@ -136,8 +136,6 @@ const ProjectSettings = () => {
         <Content>
           <Row>
             <Col lg={{ span: 12 }}>
-              <DockerRegistry dockerRegistry={dockerRegistry} handleSubmit={handleDockerRegistry} />
-              <Divider />
               <SecretConfigure
                 secrets={secrets}
                 handleSaveSecret={handleSaveSecret}

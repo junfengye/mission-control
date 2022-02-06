@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { notify, incrementPendingRequests, decrementPendingRequests } from '../../utils';
-import ProjectPageLayout, { Content, InnerTopBar } from "../../components/project-page-layout/ProjectPageLayout";
-import Topbar from '../../components/topbar/Topbar';
-import Sidenav from '../../components/sidenav/Sidenav';
-import EndpointForm from '../../components/remote-services/endpoint-form/EndpointForm';
-import { saveRemoteServiceEndpoint, getRemoteServiceEndpoints, getRemoteServiceURL } from '../../operations/remoteServices';
-import { projectModules, actionQueuedMessage } from '../../constants';
-import { getCacheConfig } from '../../operations/cache';
+import { notify, incrementPendingRequests, decrementPendingRequests } from '../../../utils';
+import ProjectPageLayout, { Content, InnerTopBar } from "../../../components/project-page-layout/ProjectPageLayout";
+import Topbar from '../../../components/topbar/Topbar';
+import Sidenav from '../../../components/sidenav/Sidenav';
+import EndpointForm from '../../../components/remote-services/endpoint-form/EndpointForm';
+import { saveRemoteServiceEndpoint, getRemoteServiceEndpoints, getRemoteServiceURL } from '../../../operations/remoteServices';
+import { projectModules, actionQueuedMessage } from '../../../constants';
+import { getCacheConfig } from '../../../operations/cache';
 
 const ConfigureEndpoint = () => {
   // Router params

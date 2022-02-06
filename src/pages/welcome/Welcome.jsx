@@ -6,7 +6,7 @@ import { Button } from 'antd'
 const Welcome = () => {
   return (
     <div className="welcome-page">
-      <div className="outer-rectangle"></div>
+      <div className="outer-rectangle"/>
       <div className="inner-rectangle">
         <div className="content">
           <span className="welcome">Welcome to Space Cloud!</span>

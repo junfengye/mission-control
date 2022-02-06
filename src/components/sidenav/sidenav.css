@@ -49,7 +49,6 @@
 
 .sidenav-version {
   z-index: 100;
-  padding: 16px;
   border-top: 1px solid #eee;
   width: 100%;
   margin-top: auto;
@@ -58,7 +57,7 @@
 
 .sidenav-version .sidenav-version-content {
   display: inline-block;
-  margin-left: 16px;
+  width: 100%;
 }
 
 .sidenav-container .upgrade-btn {

@@ -86,19 +86,6 @@ const Topbar = (props) => {
             <Menu.Item>
               <a href="https://docs.space-cloud.io/" target="_blank">Docs</a>
             </Menu.Item>
-            <Menu.Item>
-              <a href="https://learn.space-cloud.io/" target="_blank">Learn</a>
-            </Menu.Item>
-            <Menu.Item>
-              <a href="https://github.com/spacecloud-io/space-cloud" target="_blank">
-                <img src={githubIcon} />
-              </a>
-            </Menu.Item>
-            <Menu.Item>
-              <Popover content={content} trigger="click" placement="bottomRight" overlayStyle={{ textAlign: "center" }}>
-                <img src={heartIcon} />
-              </Popover>
-            </Menu.Item>
             {isProdMode(state) && (
               <Menu.Item>
                 <Tooltip title="Logout">

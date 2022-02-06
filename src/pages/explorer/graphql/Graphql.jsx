@@ -42,10 +42,10 @@ const Graphql = props => {
       <Topbar showProjectSelector />
       <Sidenav selectedItem={projectModules.EXPLORER} />
       <div className='page-content page-content--no-padding'>
-        <ExplorerTabs activeKey="graphql" projectID={projectID} />
+        <ExplorerTabs activeKey="graphiQL" projectID={projectID} />
         <div style={{ padding: "32px 32px 0" }}>
           <div className="row">
-            <h3>GraphQL endpoint</h3>
+            <h3>GraphQL Endpoint</h3>
             <div style={{
               lineHeight: "38px",
               border: "1px solid #f0f0f0"

@@ -1,16 +1,16 @@
 import React, { useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { notify, incrementPendingRequests, decrementPendingRequests, openSecurityRulesPage } from "../../utils"
+import { notify, incrementPendingRequests, decrementPendingRequests, openSecurityRulesPage } from "../../../utils"
 import { LeftOutlined } from '@ant-design/icons';
 import { Button, Table, Popconfirm, Input, Empty } from "antd";
-import Topbar from "../../components/topbar/Topbar"
-import Sidenav from "../../components/sidenav/Sidenav"
-import endpointImg from "../../assets/structure.svg"
-import { endpointTypes, securityRuleGroups, projectModules, actionQueuedMessage } from "../../constants"
-import { deleteRemoteServiceEndpoint, getRemoteServiceEndpoints } from "../../operations/remoteServices"
+import Topbar from "../../../components/topbar/Topbar"
+import Sidenav from "../../../components/sidenav/Sidenav"
+import endpointImg from "../../../assets/structure.svg"
+import { endpointTypes, securityRuleGroups, projectModules, actionQueuedMessage } from "../../../constants"
+import { deleteRemoteServiceEndpoint, getRemoteServiceEndpoints } from "../../../operations/remoteServices"
 import Highlighter from 'react-highlight-words';
-import EmptySearchResults from "../../components/utils/empty-search-results/EmptySearchResults";
+import EmptySearchResults from "../../../components/utils/empty-search-results/EmptySearchResults";
 
 const ServiceTopBar = ({ projectID, serviceName }) => {
 
